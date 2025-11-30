@@ -501,8 +501,8 @@
 
 /* Enhanced Footer */
 .demo-footer {
-  background: var(--pivot-bg-secondary, #2d3748);
-  color: var(--pivot-text-primary, #e2e8f0);
+  background: #2d3748;
+  color: #e2e8f0;
   text-align: center;
   padding: 32px 20px;
   margin-top: 40px;
@@ -514,43 +514,46 @@
 }
 
 .footer-cta {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .footer-cta-link {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
-  background: var(--pivot-accent-primary, #667eea);
+  gap: 8px;
+  padding: 12px 24px;
+  background: #667eea;
   color: white;
   text-decoration: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 .footer-cta-link:hover {
-  background: var(--pivot-accent-hover, #5568d3);
+  background: #5568d3;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
 }
 
 .footer-main {
   margin: 0 0 12px 0;
   font-size: 16px;
   font-weight: 500;
+  color: #e2e8f0;
 }
 
 .footer-main a {
-  color: var(--pivot-accent-primary, #667eea);
+  color: #a5b4fc;
   text-decoration: none;
   font-weight: 600;
 }
 
 .footer-main a:hover {
   text-decoration: underline;
+  color: #c4b5fd;
 }
 
 .footer-links {
@@ -563,23 +566,24 @@
 }
 
 .footer-links a {
-  color: var(--pivot-accent-primary, #667eea);
+  color: #a5b4fc;
   text-decoration: none;
   font-size: 14px;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
+  color: #c4b5fd;
 }
 
 .footer-separator {
-  color: var(--pivot-text-muted, #718096);
+  color: #94a3b8;
 }
 
 .footer-tech {
   margin: 0;
   font-size: 13px;
-  color: var(--pivot-text-secondary, #a0aec0);
+  color: #cbd5e1;
 }
 
 /* Table Enhancements - Zebra Striping */
