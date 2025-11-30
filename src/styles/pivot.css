@@ -522,8 +522,8 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: #667eea;
-  color: white;
+  background: #667eea !important;
+  color: #ffffff !important;
   text-decoration: none;
   border-radius: 6px;
   font-size: 15px;
@@ -533,7 +533,8 @@
 }
 
 .footer-cta-link:hover {
-  background: #5568d3;
+  background: #5568d3 !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
 }
