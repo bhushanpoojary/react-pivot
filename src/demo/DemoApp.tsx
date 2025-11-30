@@ -30,30 +30,48 @@ export function DemoApp() {
       <header className="demo-header">
         <h1>React Pivot Table Demo</h1>
         <p>A lightweight, customizable pivot table component for React</p>
-        <div style={{ marginTop: '20px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div style={{ marginTop: '20px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
           <ThemeSelector />
           <a
             href="themes.html"
-            style={{
-              padding: '8px 16px',
-              background: 'rgba(255, 255, 255, 0.2)',
-              color: 'white',
-              borderRadius: '4px',
-              textDecoration: 'none',
-              fontSize: '14px',
-              fontWeight: '500',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-            }}
+            className="hero-button"
           >
             🎨 View All Themes
           </a>
+          <a
+            href="https://github.com/bhushanpoojary/react-pivot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-button"
+          >
+            <span style={{ marginRight: '6px' }}>⭐</span>
+            View on GitHub
+          </a>
+        </div>
+        <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
+          <code className="npm-install-pill">
+            npm install react-pivot
+          </code>
+          <span style={{ marginLeft: '8px', color: 'rgba(255, 255, 255, 0.7)', fontSize: '14px' }}>
+            (coming soon)
+          </span>
         </div>
       </header>
 
       <main className="demo-main">
         <section className="demo-section">
           <h2>Configure Pivot Table</h2>
-          <p>Drag and drop fields to different zones to configure your pivot table</p>
+          <p className="section-help-text">
+            Drag fields between Rows, Columns and Values to change the pivot layout
+          </p>
+          <div className="data-info-chips">
+            <span className="info-chip">
+              📊 Records: {salesData.length.toLocaleString()}
+            </span>
+            <span className="info-chip">
+              🔢 Aggregations: sum, avg, min, max, count
+            </span>
+          </div>
           <PivotFieldList
             fields={fields}
             config={config}
@@ -81,7 +99,7 @@ export function DemoApp() {
         </section>
 
         <section className="demo-section">
-          <h2>About</h2>
+          <h2>Why react-pivot?</h2>
           <div className="demo-info">
             <p>
               <strong>react-pivot</strong> is an open-source React library for building
@@ -89,24 +107,40 @@ export function DemoApp() {
             </p>
             <h3>Features:</h3>
             <ul>
-              <li>✨ Drag-and-drop field configuration</li>
-              <li>📊 Multiple aggregation types (sum, avg, min, max, count)</li>
-              <li>🎨 Minimal, customizable styling</li>
-              <li>📦 Lightweight with no heavy dependencies</li>
-              <li>🔧 TypeScript support</li>
-              <li>💾 CSV export functionality</li>
+              <li>✅ Drag-and-drop field configuration (rows, columns, values, filters)</li>
+              <li>✅ Multiple aggregation types (sum, avg, min, max, count)</li>
+              <li>✅ Works with large datasets</li>
+              <li>✅ Headless engine + React UI components</li>
+              <li>✅ 10+ beautiful themes with customizable styling</li>
+              <li>✅ TypeScript support with full type safety</li>
+              <li>✅ CSV export functionality</li>
+              <li>✅ Lightweight with no heavy dependencies</li>
             </ul>
+            <p style={{ marginTop: '20px', fontStyle: 'italic', color: 'var(--pivot-text-secondary)' }}>
+              react-pivot is currently in active development. Feedback and GitHub issues are welcome!
+            </p>
           </div>
         </section>
       </main>
 
       <footer className="demo-footer">
-        <p>
-          Built with React + TypeScript + Vite | 
-          <a href="https://github.com/bhushanpoojary/react-pivot" target="_blank" rel="noopener noreferrer">
-            {' '}GitHub
-          </a>
-        </p>
+        <div className="footer-content">
+          <p className="footer-main">
+            Made by <a href="https://github.com/bhushanpoojary" target="_blank" rel="noopener noreferrer">Bhushan Poojary</a>
+          </p>
+          <div className="footer-links">
+            <a href="https://github.com/bhushanpoojary/react-pivot" target="_blank" rel="noopener noreferrer">
+              React Pivot (GitHub)
+            </a>
+            <span className="footer-separator">•</span>
+            <a href="https://reactdatagrid.dev" target="_blank" rel="noopener noreferrer">
+              React Data Grid
+            </a>
+          </div>
+          <p className="footer-tech">
+            Built with React + TypeScript + Vite
+          </p>
+        </div>
       </footer>
     </div>
   );
