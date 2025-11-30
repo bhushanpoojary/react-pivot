@@ -36,5 +36,5 @@ export interface PivotResult {
   cells: PivotResultCell[][];
   rowTotals?: PivotResultCell[];
   columnTotals?: PivotResultCell[];
-  grandTotal?: number;
+  grandTotal?: number | null;
 }

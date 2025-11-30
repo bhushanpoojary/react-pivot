@@ -101,9 +101,83 @@ export function buildPivot(
     cells.push(rowCells);
   });
 
+  // Calculate row totals (sum across columns for each row)
+  const rowTotals: PivotResultCell[] = [];
+  rowKeys.forEach((rowKey) => {
+    valueFields.forEach(valueField => {
+      // Find all matching rows for this row key (across all columns)
+      const matchingRows = filteredData.filter(dataRow => {
+        const dataRowKey = rowFields.map(f => String(dataRow[f.dataKey] ?? '')).join('|');
+        return dataRowKey === rowKey;
+      });
+
+      const values = matchingRows
+        .map(r => parseFloat(String(r[valueField.dataKey])))
+        .filter(v => !isNaN(v));
+
+      const aggregatedValue = valueField.aggregation
+        ? aggregate(values, valueField.aggregation)
+        : null;
+
+      rowTotals.push({
+        rowKey,
+        columnKey: 'total',
+        value: aggregatedValue,
+        fieldId: valueField.id,
+        aggregation: valueField.aggregation || 'sum',
+      });
+    });
+  });
+
+  // Calculate column totals (sum across rows for each column)
+  const columnTotals: PivotResultCell[] = [];
+  colKeys.forEach(colKey => {
+    valueFields.forEach(valueField => {
+      // Find all matching rows for this column key (across all rows)
+      const matchingRows = filteredData.filter(dataRow => {
+        const dataColKey = colFields.length > 0
+          ? colFields.map(f => String(dataRow[f.dataKey] ?? '')).join('|')
+          : 'total';
+        return dataColKey === colKey;
+      });
+
+      const values = matchingRows
+        .map(r => parseFloat(String(r[valueField.dataKey])))
+        .filter(v => !isNaN(v));
+
+      const aggregatedValue = valueField.aggregation
+        ? aggregate(values, valueField.aggregation)
+        : null;
+
+      columnTotals.push({
+        rowKey: 'total',
+        columnKey: colKey,
+        value: aggregatedValue,
+        fieldId: valueField.id,
+        aggregation: valueField.aggregation || 'sum',
+      });
+    });
+  });
+
+  // Calculate grand total (aggregate of all data)
+  let grandTotal: number | null = null;
+  if (valueFields.length > 0) {
+    const valueField = valueFields[0]; // Use first value field for grand total
+    const values = filteredData
+      .map(r => parseFloat(String(r[valueField.dataKey])))
+      .filter(v => !isNaN(v));
+    
+    grandTotal = valueField.aggregation
+      ? aggregate(values, valueField.aggregation)
+      : null;
+  }
+
   return {
     rowHeaders,
     columnHeaders,
     cells,
+    rowTotals,
+    columnTotals,
+    grandTotal,
   };
 }

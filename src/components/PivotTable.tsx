@@ -20,12 +20,13 @@ export function PivotTable<T = Record<string, unknown>>({
   config,
   className = '',
   style,
+  showTotals = false,
 }: PivotTableProps<T>) {
   const pivotResult = useMemo(() => {
     return buildPivot(data as Record<string, unknown>[], fields, config);
   }, [data, fields, config]);
 
-  const { rowHeaders, columnHeaders, cells } = pivotResult;
+  const { rowHeaders, columnHeaders, cells, rowTotals, columnTotals, grandTotal } = pivotResult;
 
   // Calculate column span for row headers
   const rowHeaderColSpan = config.rows.length;
@@ -54,6 +55,13 @@ export function PivotTable<T = Record<string, unknown>>({
                   className="pivot-column-header"
                 />
               ))}
+              {/* Total column header */}
+              {showTotals && rowIndex === columnHeaders.length - 1 && (
+                <PivotHeaderCell
+                  value="Total"
+                  className="pivot-column-header pivot-total-header"
+                />
+              )}
             </tr>
           ))}
         </thead>
@@ -75,8 +83,41 @@ export function PivotTable<T = Record<string, unknown>>({
                   cell={cell}
                 />
               ))}
+              {/* Row total */}
+              {showTotals && rowTotals && (
+                <PivotValueCell
+                  key={`row-total-${rowIndex}`}
+                  cell={rowTotals[rowIndex]}
+                  className="pivot-total-cell"
+                />
+              )}
             </tr>
           ))}
+          {/* Column totals row */}
+          {showTotals && columnTotals && (
+            <tr className="pivot-totals-row">
+              {/* "Total" label */}
+              <PivotHeaderCell
+                value="Total"
+                className="pivot-row-header pivot-total-header"
+                colSpan={rowHeaderColSpan}
+              />
+              {/* Column totals */}
+              {columnTotals.map((cell, cellIndex) => (
+                <PivotValueCell
+                  key={`col-total-${cellIndex}`}
+                  cell={cell}
+                  className="pivot-total-cell"
+                />
+              ))}
+              {/* Grand total */}
+              {grandTotal !== null && grandTotal !== undefined && (
+                <td className="pivot-cell pivot-value-cell pivot-grand-total-cell">
+                  {grandTotal.toFixed(2)}
+                </td>
+              )}
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
