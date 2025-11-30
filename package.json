@@ -2,6 +2,28 @@
   "name": "react-pivot",
   "private": false,
   "version": "0.2.0",
+  "description": "A lightweight, customizable React pivot table component library with drag-and-drop field configuration",
+  "author": "Bhushan Poojary <bhushanpoojary1@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhushanpoojary/react-pivot.git"
+  },
+  "homepage": "https://bhushanpoojary.github.io/react-pivot/",
+  "bugs": {
+    "url": "https://github.com/bhushanpoojary/react-pivot/issues"
+  },
+  "keywords": [
+    "react",
+    "pivot",
+    "pivot-table",
+    "data-grid",
+    "table",
+    "aggregation",
+    "drag-and-drop",
+    "typescript",
+    "react-component"
+  ],
   "type": "module",
   "main": "./dist/react-pivot.umd.cjs",
   "module": "./dist/react-pivot.js",
@@ -15,7 +37,10 @@
     "./styles.css": "./dist/style.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "dev": "vite",
