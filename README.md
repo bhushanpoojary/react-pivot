@@ -8,20 +8,41 @@ A lightweight, customizable React pivot table component library with drag-and-dr
 
 [**Live Demo**](https://bhushanpoojary.github.io/react-pivot/) | [**View Themes**](https://bhushanpoojary.github.io/react-pivot/themes.html)
 
-## Demo
+## ✨ Demo
+
+> **📹 GIF Demo Coming Soon!** - Record a 5-10 second GIF to showcase the features below
 
 ![React Pivot Demo](./demo.gif)
 
-> **Note:** Record a GIF showing drag-and-drop field configuration, theme switching, and CSV export. Use [ScreenToGif](https://www.screentogif.com/) (Windows) or [Kap](https://getkap.co/) (Mac) to create the demo.
+<details>
+<summary><b>🎬 How to Record the Demo GIF</b></summary>
 
-**What to include in the GIF:**
-1. Drag fields between Rows, Columns, and Values
-2. Switch between different themes
-3. Toggle "Show Grand Totals"
-4. Switch between dataset tabs (Sales, Inventory, Orders)
-5. Export to CSV
+### Recording Tools:
+- **Windows**: [ScreenToGif](https://www.screentogif.com/) (Free, recommended)
+- **Mac**: [Kap](https://getkap.co/) (Free, open-source)
+- **Cross-platform**: [Gifski](https://gif.ski/) or [LICEcap](https://www.cockos.com/licecap/)
 
-Once recorded, save as `demo.gif` in the repository root.
+### What to Show (5-10 seconds):
+1. ✨ **Drag a field** from Available → Rows or Columns (2 seconds)
+2. 🎨 **Switch theme** using the dropdown (1 second)
+3. 📊 **Switch dataset tab** (Sales → Inventory → Orders) (2 seconds)
+4. ✓ **Toggle "Show Grand Totals"** (1 second)
+5. 📋 **Click "Copy CSV"** button (1 second)
+
+### Recording Tips:
+- Keep it under 10 seconds
+- Use 800x600 resolution or smaller
+- Focus on the main table area
+- No audio needed
+- 10-15 FPS is enough
+- Compress to under 5MB
+
+### After Recording:
+1. Save as `demo.gif` in repository root
+2. Commit: `git add demo.gif && git commit -m "Add demo GIF" && git push`
+3. The README will automatically show it!
+
+</details>
 
 ## Features
 

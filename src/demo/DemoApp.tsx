@@ -98,6 +98,17 @@ export function DemoApp() {
       </a>
       
       <header className="demo-header">
+        <div className="header-badge-container">
+          <a
+            href="https://github.com/bhushanpoojary/react-pivot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="github-star-badge"
+            title="Star react-pivot on GitHub"
+          >
+            ⭐ Star on GitHub
+          </a>
+        </div>
         <h1>React Pivot Table Demo</h1>
         <p>A lightweight, customizable pivot table component for React</p>
         <div style={{ marginTop: '20px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -114,7 +125,6 @@ export function DemoApp() {
             rel="noopener noreferrer"
             className="hero-button"
           >
-            <span style={{ marginRight: '6px' }}>⭐</span>
             View on GitHub
           </a>
         </div>

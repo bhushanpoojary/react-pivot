@@ -590,6 +590,36 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* GitHub Star Badge */
+.header-badge-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.github-star-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.github-star-badge:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Edit Demo Link */
 .edit-demo-link {
   position: fixed;
