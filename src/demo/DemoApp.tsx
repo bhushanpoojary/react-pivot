@@ -4,6 +4,7 @@ import { PivotFieldList } from '../components/PivotFieldList';
 import { PivotToolbar } from '../components/PivotToolbar';
 import { ThemeSelector } from '../components/ThemeSelector';
 import { CodeHighlight } from '../components/CodeHighlight';
+import { DocsSidebar } from '../components/DocsSidebar';
 import type { PivotConfig } from '../lib/types';
 import { salesData, inventoryData, orderData } from './demoData';
 
@@ -187,35 +188,38 @@ export default MyPivotApp;`;
 
   return (
     <div className="demo-app">
-      <div className="feedback-banner">
-        <div className="feedback-content">
-          <span className="feedback-icon">💡</span>
-          <div className="feedback-text">
-            <strong>Found a bug or have a feature request?</strong>
-            <span>Help us improve by reporting issues or suggesting new features</span>
-          </div>
-          <a
-            href="https://github.com/bhushanpoojary/react-pivot/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="feedback-button"
-          >
-            🐛 Report Issue
-          </a>
-        </div>
-      </div>
-
-      <a
-        href="https://github.com/bhushanpoojary/react-pivot/tree/main/src/demo"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="edit-demo-link"
-        aria-label="Edit demo source code on GitHub"
-      >
-        🔧 Edit Demo on GitHub
-      </a>
+      <DocsSidebar />
       
-      <header className="demo-header">
+      <div className="demo-content-wrapper">
+        <div className="feedback-banner">
+          <div className="feedback-content">
+            <span className="feedback-icon">💡</span>
+            <div className="feedback-text">
+              <strong>Found a bug or have a feature request?</strong>
+              <span>Help us improve by reporting issues or suggesting new features</span>
+            </div>
+            <a
+              href="https://github.com/bhushanpoojary/react-pivot/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="feedback-button"
+            >
+              🐛 Report Issue
+            </a>
+          </div>
+        </div>
+
+        <a
+          href="https://github.com/bhushanpoojary/react-pivot/tree/main/src/demo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="edit-demo-link"
+          aria-label="Edit demo source code on GitHub"
+        >
+          🔧 Edit Demo on GitHub
+        </a>
+        
+        <header className="demo-header" id="introduction">
         <div className="header-badge-container">
           <a
             href="https://github.com/bhushanpoojary/react-pivot"
@@ -262,7 +266,28 @@ export default MyPivotApp;`;
       </header>
 
       <main className="demo-main">
-        <section className="demo-section">
+        <section className="demo-section" id="installation">
+          <h2>Installation & Quick Start</h2>
+          <div style={{ marginBottom: '20px' }}>
+            <p>Install react-pivot via npm or yarn:</p>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '12px' }}>
+              <code className="npm-install-pill">
+                npm install react-pivot
+              </code>
+              <button
+                onClick={copyNpmCommand}
+                className="copy-button"
+                title="Copy npm command"
+                style={{ background: 'var(--pivot-accent-primary, #667eea)', color: 'white', border: 'none' }}
+              >
+                {copiedNpm ? '✓' : '📋'}
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="demo-section" id="examples">
+          <h2>Live Examples</h2>
           <div className="dataset-tabs">
             {(Object.keys(datasets) as DatasetType[]).map((key) => (
               <button
@@ -276,7 +301,7 @@ export default MyPivotApp;`;
           </div>
         </section>
 
-        <section className="demo-section">
+        <section className="demo-section" id="field-configuration">
           <h2>Configure Pivot Table</h2>
           <p className="section-help-text">
             Drag fields between Rows, Columns and Values to change the pivot layout
@@ -296,11 +321,11 @@ export default MyPivotApp;`;
           />
         </section>
 
-        <section className="demo-section">
-          <div className="demo-toolbar-section">
+        <section className="demo-section" id="basic-usage">
+          <div className="demo-toolbar-section" id="pivot-table">
             <h2>Pivot Table</h2>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <label className="totals-toggle">
+              <label className="totals-toggle" id="totals">
                 <input
                   type="checkbox"
                   checked={showTotals}
@@ -308,7 +333,7 @@ export default MyPivotApp;`;
                 />
                 <span>Show Grand Totals</span>
               </label>
-              <PivotToolbar
+              <PivotToolbar id="pivot-toolbar"
                 data={currentDataset.data as unknown as Record<string, unknown>[]}
                 fields={currentDataset.fields}
                 config={config}
@@ -325,7 +350,7 @@ export default MyPivotApp;`;
           />
         </section>
 
-        <section className="demo-section" style={{ marginTop: '40px' }}>
+        <section className="demo-section" id="code-examples" style={{ marginTop: '40px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <h2 style={{ margin: 0 }}>Code Example</h2>
             <button
@@ -359,7 +384,7 @@ export default MyPivotApp;`;
           </div>
         </section>
 
-        <section className="demo-section">
+        <section className="demo-section" id="quick-start">
           <h2>Why react-pivot?</h2>
           <div className="demo-info">
             <p>
@@ -383,7 +408,88 @@ export default MyPivotApp;`;
           </div>
         </section>
 
-        <section className="demo-section" style={{ marginTop: '40px' }}>
+        <section className="demo-section" id="aggregations" style={{ marginTop: '40px' }}>
+          <h2>Aggregations</h2>
+          <div className="demo-info">
+            <p>react-pivot supports multiple aggregation functions for data analysis:</p>
+            <ul>
+              <li><strong>Sum</strong> - Add up all values in a group</li>
+              <li><strong>Average</strong> - Calculate the mean of values</li>
+              <li><strong>Min</strong> - Find the minimum value</li>
+              <li><strong>Max</strong> - Find the maximum value</li>
+              <li><strong>Count</strong> - Count the number of records</li>
+            </ul>
+            <p>Select different aggregation types in the field configuration above to see them in action.</p>
+          </div>
+        </section>
+
+        <section className="demo-section" id="drag-drop" style={{ marginTop: '40px' }}>
+          <h2>Drag & Drop</h2>
+          <div className="demo-info">
+            <p>react-pivot features an intuitive drag-and-drop interface for configuring your pivot table:</p>
+            <ul>
+              <li>Drag fields from the <strong>Available Fields</strong> section</li>
+              <li>Drop them into <strong>Rows</strong>, <strong>Columns</strong>, <strong>Values</strong>, or <strong>Filters</strong></li>
+              <li>Reorder fields by dragging within the same zone</li>
+              <li>Remove fields by clicking the × button</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="demo-section" id="props-api" style={{ marginTop: '40px' }}>
+          <h2>Props API</h2>
+          <div className="demo-info">
+            <h3>PivotTable Props</h3>
+            <ul>
+              <li><code>data</code> - Array of data objects</li>
+              <li><code>fields</code> - Array of field configurations</li>
+              <li><code>config</code> - Pivot configuration (rows, columns, values, filters)</li>
+              <li><code>onConfigChange</code> - Callback when configuration changes</li>
+              <li><code>showTotals</code> - Boolean to show/hide grand totals</li>
+            </ul>
+            <h3>PivotFieldList Props</h3>
+            <ul>
+              <li><code>fields</code> - Array of available fields</li>
+              <li><code>config</code> - Current pivot configuration</li>
+              <li><code>onConfigChange</code> - Callback when configuration changes</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="demo-section" id="themes" style={{ marginTop: '40px' }}>
+          <h2 id="styling">Theme Options</h2>
+          <div className="demo-info">
+            <p>react-pivot comes with 10+ beautiful themes out of the box:</p>
+            <ul>
+              <li>Default, Modern, Professional</li>
+              <li>Dark, Midnight, Ocean</li>
+              <li>Forest, Sunset, Purple</li>
+              <li>Minimal, Excel, and more!</li>
+            </ul>
+            <p>
+              <a href="themes.html" target="_blank" style={{ color: 'var(--pivot-accent-primary, #667eea)', fontWeight: 600 }}>
+                → View All Themes
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section className="demo-section" id="exporting" style={{ marginTop: '40px' }}>
+          <h2>Exporting Data</h2>
+          <div className="demo-info">
+            <p>Export your pivot table data to CSV format with a single click using the <strong>PivotToolbar</strong> component.</p>
+            <p>The exported file includes all visible data with proper headers and formatting.</p>
+          </div>
+        </section>
+
+        <section className="demo-section" id="sorting" style={{ marginTop: '40px' }}>
+          <h2 id="formatting">Sorting & Formatting</h2>
+          <div className="demo-info">
+            <p>Click on column headers in the pivot table to sort data. The table automatically formats numbers and handles null values gracefully.</p>
+          </div>
+        </section>
+
+        <section className="demo-section" id="use-cases" style={{ marginTop: '40px' }}>
           <article>
             <h2>What is a Pivot Table in React?</h2>
             <p style={{ lineHeight: '1.6', marginBottom: '16px' }}>
@@ -442,6 +548,7 @@ export default MyPivotApp;`;
           </p>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
