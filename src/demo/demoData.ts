@@ -34,3 +34,51 @@ export const salesData: SalesData[] = [
   { date: '2024-03', region: 'West', product: 'Monitor', category: 'Electronics', quantity: 24, revenue: 7200, cost: 4800 },
   { date: '2024-03', region: 'West', product: 'Keyboard', category: 'Electronics', quantity: 32, revenue: 3200, cost: 1600 },
 ];
+
+export interface InventoryData {
+  warehouse: string;
+  product: string;
+  status: string;
+  stockLevel: number;
+  reorderPoint: number;
+  valueUSD: number;
+}
+
+export const inventoryData: InventoryData[] = [
+  { warehouse: 'Warehouse A', product: 'Laptop', status: 'In Stock', stockLevel: 120, reorderPoint: 50, valueUSD: 180000 },
+  { warehouse: 'Warehouse A', product: 'Mouse', status: 'In Stock', stockLevel: 350, reorderPoint: 100, valueUSD: 10500 },
+  { warehouse: 'Warehouse A', product: 'Keyboard', status: 'Low Stock', stockLevel: 45, reorderPoint: 50, valueUSD: 4500 },
+  { warehouse: 'Warehouse B', product: 'Laptop', status: 'In Stock', stockLevel: 85, reorderPoint: 50, valueUSD: 127500 },
+  { warehouse: 'Warehouse B', product: 'Monitor', status: 'In Stock', stockLevel: 200, reorderPoint: 75, valueUSD: 60000 },
+  { warehouse: 'Warehouse B', product: 'Mouse', status: 'In Stock', stockLevel: 400, reorderPoint: 100, valueUSD: 12000 },
+  { warehouse: 'Warehouse C', product: 'Keyboard', status: 'In Stock', stockLevel: 180, reorderPoint: 50, valueUSD: 18000 },
+  { warehouse: 'Warehouse C', product: 'Monitor', status: 'Low Stock', stockLevel: 60, reorderPoint: 75, valueUSD: 18000 },
+  { warehouse: 'Warehouse C', product: 'Laptop', status: 'In Stock', stockLevel: 95, reorderPoint: 50, valueUSD: 142500 },
+  { warehouse: 'Warehouse A', product: 'Monitor', status: 'In Stock', stockLevel: 150, reorderPoint: 75, valueUSD: 45000 },
+  { warehouse: 'Warehouse B', product: 'Keyboard', status: 'In Stock', stockLevel: 220, reorderPoint: 50, valueUSD: 22000 },
+  { warehouse: 'Warehouse C', product: 'Mouse', status: 'In Stock', stockLevel: 500, reorderPoint: 100, valueUSD: 15000 },
+];
+
+export interface OrderData {
+  orderDate: string;
+  customer: string;
+  orderStatus: string;
+  orderValue: number;
+  itemCount: number;
+  shippingCost: number;
+}
+
+export const orderData: OrderData[] = [
+  { orderDate: '2024-01', customer: 'Acme Corp', orderStatus: 'Delivered', orderValue: 15000, itemCount: 25, shippingCost: 150 },
+  { orderDate: '2024-01', customer: 'TechStart Inc', orderStatus: 'Delivered', orderValue: 8500, itemCount: 12, shippingCost: 85 },
+  { orderDate: '2024-01', customer: 'Global Systems', orderStatus: 'Delivered', orderValue: 22000, itemCount: 18, shippingCost: 220 },
+  { orderDate: '2024-02', customer: 'Acme Corp', orderStatus: 'Delivered', orderValue: 18000, itemCount: 30, shippingCost: 180 },
+  { orderDate: '2024-02', customer: 'DataFlow Ltd', orderStatus: 'Shipped', orderValue: 12000, itemCount: 15, shippingCost: 120 },
+  { orderDate: '2024-02', customer: 'TechStart Inc', orderStatus: 'Delivered', orderValue: 9500, itemCount: 14, shippingCost: 95 },
+  { orderDate: '2024-03', customer: 'Global Systems', orderStatus: 'Processing', orderValue: 25000, itemCount: 22, shippingCost: 250 },
+  { orderDate: '2024-03', customer: 'Acme Corp', orderStatus: 'Shipped', orderValue: 16500, itemCount: 28, shippingCost: 165 },
+  { orderDate: '2024-03', customer: 'DataFlow Ltd', orderStatus: 'Delivered', orderValue: 14000, itemCount: 18, shippingCost: 140 },
+  { orderDate: '2024-01', customer: 'DataFlow Ltd', orderStatus: 'Delivered', orderValue: 11000, itemCount: 16, shippingCost: 110 },
+  { orderDate: '2024-02', customer: 'Global Systems', orderStatus: 'Delivered', orderValue: 19500, itemCount: 20, shippingCost: 195 },
+  { orderDate: '2024-03', customer: 'TechStart Inc', orderStatus: 'Processing', orderValue: 10500, itemCount: 13, shippingCost: 105 },
+];
