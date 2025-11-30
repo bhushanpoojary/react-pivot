@@ -187,6 +187,24 @@ export default MyPivotApp;`;
 
   return (
     <div className="demo-app">
+      <div className="feedback-banner">
+        <div className="feedback-content">
+          <span className="feedback-icon">💡</span>
+          <div className="feedback-text">
+            <strong>Found a bug or have a feature request?</strong>
+            <span>Help us improve by reporting issues or suggesting new features</span>
+          </div>
+          <a
+            href="https://github.com/bhushanpoojary/react-pivot/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="feedback-button"
+          >
+            🐛 Report Issue
+          </a>
+        </div>
+      </div>
+
       <a
         href="https://github.com/bhushanpoojary/react-pivot/tree/main/src/demo"
         target="_blank"

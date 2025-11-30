@@ -243,6 +243,87 @@
   background: #f5f5f5;
 }
 
+/* Feedback Banner */
+.feedback-banner {
+  background: linear-gradient(135deg, #f6f8fc 0%, #e9f0ff 100%);
+  border-bottom: 1px solid #d1e0ff;
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feedback-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feedback-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.feedback-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.feedback-text strong {
+  color: #2c3e50;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.feedback-text span {
+  color: #5a6c7d;
+  font-size: 13px;
+}
+
+.feedback-button {
+  padding: 8px 20px;
+  background: #667eea;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+}
+
+.feedback-button:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.feedback-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .feedback-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .feedback-text {
+    min-width: auto;
+  }
+
+  .feedback-button {
+    width: 100%;
+  }
+}
+
 .demo-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
