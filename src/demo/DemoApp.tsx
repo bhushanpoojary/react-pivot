@@ -93,6 +93,7 @@ export function DemoApp() {
         target="_blank"
         rel="noopener noreferrer"
         className="edit-demo-link"
+        aria-label="Edit demo source code on GitHub"
       >
         🔧 Edit Demo on GitHub
       </a>
@@ -105,12 +106,13 @@ export function DemoApp() {
             rel="noopener noreferrer"
             className="github-star-badge"
             title="Star react-pivot on GitHub"
+            aria-label="Star react-pivot on GitHub"
           >
             ⭐ Star on GitHub
           </a>
         </div>
         <h1>React Pivot Table Demo</h1>
-        <p>A lightweight, customizable pivot table component for React</p>
+        <p>A lightweight, customizable pivot table component for React with drag-and-drop fields and data aggregations</p>
         <div style={{ marginTop: '20px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
           <ThemeSelector />
           <a
@@ -228,6 +230,40 @@ export function DemoApp() {
               react-pivot is currently in active development. Feedback and GitHub issues are welcome!
             </p>
           </div>
+        </section>
+
+        <section className="demo-section" style={{ marginTop: '40px' }}>
+          <article>
+            <h2>What is a Pivot Table in React?</h2>
+            <p style={{ lineHeight: '1.6', marginBottom: '16px' }}>
+              A pivot table is a powerful data summarization tool used in business intelligence dashboards, 
+              analytics applications, CRM systems, and financial reporting. React pivot tables enable developers 
+              to create interactive data analysis interfaces where users can dynamically reorganize and aggregate 
+              large datasets to discover insights.
+            </p>
+            <p style={{ lineHeight: '1.6', marginBottom: '16px' }}>
+              <strong>react-pivot</strong> brings enterprise-grade pivot table capabilities to React applications 
+              with features like drag-and-drop field configuration, multiple aggregation functions (sum, average, 
+              min, max, count), row and column grouping, and CSV data export. Whether you're building a sales 
+              analytics dashboard, inventory management system, or financial reporting tool, react-pivot provides 
+              the flexibility and performance you need.
+            </p>
+            
+            <h3>How to Use react-pivot</h3>
+            <p style={{ lineHeight: '1.6', marginBottom: '16px' }}>
+              Getting started with react-pivot is simple. Install the package via npm, import the components, 
+              and configure your data fields. The library provides both a headless pivot engine for advanced 
+              use cases and ready-to-use React UI components for quick integration. Check out the interactive 
+              demo above to see react-pivot in action with real datasets.
+            </p>
+            
+            <h3>Perfect for Data Analytics and BI Applications</h3>
+            <p style={{ lineHeight: '1.6' }}>
+              Whether you need a React data grid with pivot capabilities, an aggregation table for your analytics 
+              dashboard, or a drag-and-drop pivot interface for business intelligence, react-pivot delivers a 
+              lightweight, TypeScript-first solution with beautiful themes and extensive customization options.
+            </p>
+          </article>
         </section>
       </main>
 
