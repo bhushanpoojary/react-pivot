@@ -15,3 +15,7 @@ export type { PivotToolbarProps } from './components/PivotToolbar';
 export { PivotCell } from './components/PivotCell';
 export { PivotHeaderCell } from './components/PivotHeaderCell';
 export { PivotValueCell } from './components/PivotValueCell';
+export { ThemeSelector } from './components/ThemeSelector';
+export type { ThemeSelectorProps } from './components/ThemeSelector';
+export { themes, applyTheme, getStoredTheme, setStoredTheme } from './lib/themes';
+export type { Theme } from './lib/themes';

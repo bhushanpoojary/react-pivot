@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PivotTable } from '../components/PivotTable';
 import { PivotFieldList } from '../components/PivotFieldList';
 import { PivotToolbar } from '../components/PivotToolbar';
+import { ThemeSelector } from '../components/ThemeSelector';
 import type { PivotField, PivotConfig } from '../lib/types';
 import { salesData } from './demoData';
 
@@ -29,6 +30,24 @@ export function DemoApp() {
       <header className="demo-header">
         <h1>React Pivot Table Demo</h1>
         <p>A lightweight, customizable pivot table component for React</p>
+        <div style={{ marginTop: '20px', display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <ThemeSelector />
+          <a
+            href="themes.html"
+            style={{
+              padding: '8px 16px',
+              background: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+              borderRadius: '4px',
+              textDecoration: 'none',
+              fontSize: '14px',
+              fontWeight: '500',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+            }}
+          >
+            🎨 View All Themes
+          </a>
+        </div>
       </header>
 
       <main className="demo-main">

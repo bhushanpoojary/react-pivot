@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2025-11-30
+
+### Added
+- **Theme System**: 10 beautiful pre-built themes
+  - Quartz (Modern White) - Default
+  - Alpine (Classic Business)
+  - Material Design
+  - Dark Mode
+  - Nord (Arctic)
+  - Dracula
+  - Solarized Light
+  - Solarized Dark
+  - Monokai
+  - One Dark
+- `ThemeSelector` component for easy theme switching
+- CSS variables for all colors and styling
+- Dedicated themes showcase page at `/themes.html`
+- Local storage support for theme persistence
+- Theme preview with color swatches
+
+### Changed
+- All CSS colors now use CSS variables for dynamic theming
+- Updated styling to support theme system
+- Enhanced demo app with theme selector in header
+- Multi-page build configuration (main + themes page)
+
+### Documentation
+- Added theme usage examples in themes page
+- Added custom theme creation guide
+- Updated README with theme information
+
 ## [0.1.0] - 2025-11-30
 
 ### Added

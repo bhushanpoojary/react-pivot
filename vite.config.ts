@@ -27,6 +27,13 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-    } : undefined,
+    } : {
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, 'index.html'),
+          themes: resolve(__dirname, 'themes.html'),
+        },
+      },
+    },
   };
 })

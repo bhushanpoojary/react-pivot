@@ -12,7 +12,7 @@ A lightweight, customizable React pivot table component library with drag-and-dr
 
 ✨ **Drag-and-Drop Configuration** - Intuitive field arrangement with HTML5 drag-and-drop  
 📊 **Multiple Aggregations** - Sum, Average, Min, Max, Count  
-🎨 **Minimal Styling** - Library-agnostic CSS that's easy to customize  
+🎨 **10 Beautiful Themes** - Pre-built themes with CSS variables for customization  
 📦 **Lightweight** - No heavy dependencies, tree-shakeable  
 🔧 **TypeScript Support** - Full type definitions included  
 💾 **CSV Export** - Built-in export functionality  
@@ -163,17 +163,41 @@ const result = buildPivot(data, fields, config);
 const sum = AGGREGATORS.sum([1, 2, 3, 4]); // 10
 ```
 
-### Custom Styling
+### Themes
 
-Override CSS classes:
+Choose from 10 pre-built themes or create your own:
+
+```tsx
+import { ThemeSelector } from 'react-pivot';
+
+function App() {
+  return (
+    <div>
+      <ThemeSelector />
+      <PivotTable {...props} />
+    </div>
+  );
+}
+```
+
+**Available Themes:**
+- Quartz (Modern White) - Default
+- Alpine (Classic Business)
+- Material Design
+- Dark Mode
+- Nord (Arctic)
+- Dracula
+- Solarized Light/Dark
+- Monokai
+- One Dark
+
+**Custom Theme:**
 
 ```css
-.pivot-table {
-  border-color: #e0e0e0;
-}
-
-.pivot-field-chip {
-  background: #your-color;
+[data-theme="custom"] {
+  --pivot-bg-primary: #yourcolor;
+  --pivot-accent-primary: #yourcolor;
+  /* ... more variables */
 }
 ```
 
