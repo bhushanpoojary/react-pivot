@@ -3,6 +3,7 @@ import { PivotTable } from '../components/PivotTable';
 import { PivotFieldList } from '../components/PivotFieldList';
 import { PivotToolbar } from '../components/PivotToolbar';
 import { ThemeSelector } from '../components/ThemeSelector';
+import { CodeHighlight } from '../components/CodeHighlight';
 import type { PivotConfig } from '../lib/types';
 import { salesData, inventoryData, orderData } from './demoData';
 
@@ -72,6 +73,8 @@ export function DemoApp() {
   const [config, setConfig] = useState<PivotConfig>(datasets.sales.defaultConfig);
   const [showTotals, setShowTotals] = useState(true);
   const [copiedNpm, setCopiedNpm] = useState(false);
+  const [activeCodeTab, setActiveCodeTab] = useState<'typescript' | 'javascript'>('typescript');
+  const [copiedCode, setCopiedCode] = useState(false);
 
   const currentDataset = datasets[activeDataset];
 
@@ -85,6 +88,102 @@ export function DemoApp() {
     setCopiedNpm(true);
     setTimeout(() => setCopiedNpm(false), 2000);
   };
+
+  const copyCodeExample = () => {
+    const code = activeCodeTab === 'typescript' ? typescriptExample : javascriptExample;
+    navigator.clipboard.writeText(code);
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2000);
+  };
+
+  const typescriptExample = `import { useState } from 'react';
+import { PivotTable, PivotFieldList } from 'react-pivot';
+import type { PivotConfig, PivotField } from 'react-pivot';
+
+function MyPivotApp() {
+  const [config, setConfig] = useState<PivotConfig>({
+    rows: ['region'],
+    columns: ['date'],
+    values: ['revenue'],
+    filters: []
+  });
+
+  const fields: PivotField[] = [
+    { id: 'date', label: 'Date', dataKey: 'date', type: 'row' },
+    { id: 'region', label: 'Region', dataKey: 'region', type: 'row' },
+    { id: 'product', label: 'Product', dataKey: 'product', type: 'row' },
+    { id: 'revenue', label: 'Revenue', dataKey: 'revenue', type: 'value', aggregation: 'sum' }
+  ];
+
+  const data = [
+    { date: '2024-01', region: 'North', product: 'Widget', revenue: 1500 },
+    { date: '2024-01', region: 'South', product: 'Gadget', revenue: 2300 },
+    { date: '2024-02', region: 'North', product: 'Widget', revenue: 1800 },
+    // ... more data
+  ];
+
+  return (
+    <div>
+      <PivotFieldList 
+        fields={fields} 
+        config={config} 
+        onConfigChange={setConfig} 
+      />
+      <PivotTable 
+        data={data} 
+        fields={fields} 
+        config={config} 
+        showTotals={true}
+      />
+    </div>
+  );
+}
+
+export default MyPivotApp;`;
+
+  const javascriptExample = `import { useState } from 'react';
+import { PivotTable, PivotFieldList } from 'react-pivot';
+
+function MyPivotApp() {
+  const [config, setConfig] = useState({
+    rows: ['region'],
+    columns: ['date'],
+    values: ['revenue'],
+    filters: []
+  });
+
+  const fields = [
+    { id: 'date', label: 'Date', dataKey: 'date', type: 'row' },
+    { id: 'region', label: 'Region', dataKey: 'region', type: 'row' },
+    { id: 'product', label: 'Product', dataKey: 'product', type: 'row' },
+    { id: 'revenue', label: 'Revenue', dataKey: 'revenue', type: 'value', aggregation: 'sum' }
+  ];
+
+  const data = [
+    { date: '2024-01', region: 'North', product: 'Widget', revenue: 1500 },
+    { date: '2024-01', region: 'South', product: 'Gadget', revenue: 2300 },
+    { date: '2024-02', region: 'North', product: 'Widget', revenue: 1800 },
+    // ... more data
+  ];
+
+  return (
+    <div>
+      <PivotFieldList 
+        fields={fields} 
+        config={config} 
+        onConfigChange={setConfig} 
+      />
+      <PivotTable 
+        data={data} 
+        fields={fields} 
+        config={config} 
+        showTotals={true}
+      />
+    </div>
+  );
+}
+
+export default MyPivotApp;`;
 
   return (
     <div className="demo-app">
@@ -206,6 +305,40 @@ export function DemoApp() {
             onConfigChange={setConfig}
             showTotals={showTotals}
           />
+        </section>
+
+        <section className="demo-section" style={{ marginTop: '40px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+            <h2 style={{ margin: 0 }}>Code Example</h2>
+            <button
+              onClick={copyCodeExample}
+              className="copy-button"
+              title="Copy code"
+              style={{ padding: '8px 16px' }}
+            >
+              {copiedCode ? '✓ Copied!' : '📋 Copy Code'}
+            </button>
+          </div>
+          <div className="code-tabs">
+            <button
+              className={`code-tab ${activeCodeTab === 'typescript' ? 'active' : ''}`}
+              onClick={() => setActiveCodeTab('typescript')}
+            >
+              TypeScript
+            </button>
+            <button
+              className={`code-tab ${activeCodeTab === 'javascript' ? 'active' : ''}`}
+              onClick={() => setActiveCodeTab('javascript')}
+            >
+              JavaScript
+            </button>
+          </div>
+          <div className="code-example">
+            <CodeHighlight 
+              code={activeCodeTab === 'typescript' ? typescriptExample : javascriptExample}
+              language={activeCodeTab}
+            />
+          </div>
         </section>
 
         <section className="demo-section">

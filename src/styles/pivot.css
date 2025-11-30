@@ -784,3 +784,140 @@
 .totals-toggle span {
   user-select: none;
 }
+
+/* Code Tabs */
+.code-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid var(--pivot-border-color, #e0e0e0);
+  margin-bottom: 0;
+}
+
+.code-tab {
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--pivot-text-secondary, #666);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  bottom: -2px;
+}
+
+.code-tab:hover {
+  color: var(--pivot-accent-primary, #667eea);
+  background: var(--pivot-bg-tertiary, #f9f9f9);
+}
+
+.code-tab.active {
+  color: var(--pivot-accent-primary, #667eea);
+  border-bottom-color: var(--pivot-accent-primary, #667eea);
+  font-weight: 600;
+  background: var(--pivot-bg-tertiary, #f9f9f9);
+}
+
+/* Code Example */
+.code-example {
+  background: #1e1e1e;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.code-example pre,
+.code-highlight {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  background: #1e1e1e;
+}
+
+.code-example code,
+.code-highlight code {
+  color: #d4d4d4;
+  display: block;
+  white-space: pre;
+  font-family: inherit;
+}
+
+/* Syntax Highlighting Colors (VS Code Dark+ Theme) */
+.code-highlight .keyword {
+  color: #569cd6; /* Blue for keywords */
+  font-weight: 500;
+}
+
+.code-highlight .string {
+  color: #ce9178; /* Orange for strings */
+}
+
+.code-highlight .comment {
+  color: #6a9955; /* Green for comments */
+  font-style: italic;
+}
+
+.code-highlight .number {
+  color: #b5cea8; /* Light green for numbers */
+}
+
+.code-highlight .function {
+  color: #dcdcaa; /* Yellow for function names */
+}
+
+.code-highlight .type {
+  color: #4ec9b0; /* Cyan for types */
+}
+
+.code-highlight .tag {
+  color: #569cd6; /* Blue for JSX/HTML tags */
+}
+
+.code-highlight .property {
+  color: #9cdcfe; /* Light blue for properties */
+}
+
+.code-highlight .boolean {
+  color: #569cd6; /* Blue for boolean values */
+}
+
+/* Code Syntax Highlighting (basic) */
+.code-example code::selection,
+.code-highlight code::selection {
+  background: rgba(100, 100, 255, 0.3);
+}
+
+/* Scrollbar styling for code blocks */
+.code-example pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.code-example pre::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.code-example pre::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.code-example pre::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Responsive Code Example */
+@media (max-width: 768px) {
+  .code-example pre {
+    font-size: 12px;
+    padding: 16px;
+  }
+
+  .code-tab {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

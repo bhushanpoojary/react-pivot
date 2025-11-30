@@ -1,7 +1,7 @@
 {
   "name": "react-pivot",
   "private": false,
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A lightweight, customizable React pivot table component library with drag-and-drop field configuration",
   "author": "Bhushan Poojary <bhushanpoojary1@gmail.com>",
   "license": "MIT",
