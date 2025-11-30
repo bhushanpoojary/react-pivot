@@ -233,6 +233,11 @@ export function DemoApp() {
 
       <footer className="demo-footer">
         <div className="footer-content">
+          <div className="footer-cta">
+            <a href="https://reactdatagrid.dev" target="_blank" rel="noopener noreferrer" className="footer-cta-link">
+              ← Back to React DataGrid
+            </a>
+          </div>
           <p className="footer-main">
             Made by <a href="https://github.com/bhushanpoojary" target="_blank" rel="noopener noreferrer">Bhushan Poojary</a>
           </p>
