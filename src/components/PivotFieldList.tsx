@@ -79,21 +79,29 @@ export function PivotFieldList({
     const field = fields.find(f => f.id === fieldId);
     if (!field) return null;
 
+    const tooltipText = zone === 'available' 
+      ? 'Drag to Rows, Columns, or Values' 
+      : `Field: ${field.label}${field.aggregation ? ` (${field.aggregation})` : ''} • Drag to move`;
+
     return (
       <div
         key={fieldId}
         className="pivot-field-chip"
         draggable
         onDragStart={() => handleDragStart(fieldId)}
+        title={tooltipText}
       >
         <span>{field.label}</span>
-        <button
-          className="pivot-field-remove"
-          onClick={() => removeField(fieldId, zone)}
-          aria-label={`Remove ${field.label}`}
-        >
-          ×
-        </button>
+        {zone !== 'available' && (
+          <button
+            className="pivot-field-remove"
+            onClick={() => removeField(fieldId, zone)}
+            aria-label={`Remove ${field.label}`}
+            title="Remove field"
+          >
+            ×
+          </button>
+        )}
       </div>
     );
   };

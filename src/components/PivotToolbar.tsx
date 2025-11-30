@@ -28,7 +28,7 @@ export function PivotToolbar<T = Record<string, unknown>>({
     onConfigChange(resetConfig);
   };
 
-  const handleExportCSV = () => {
+  const buildCSVContent = () => {
     const pivotResult = buildPivot(data as Record<string, unknown>[], fields, config);
     const { rowHeaders, columnHeaders, cells } = pivotResult;
 
@@ -55,8 +55,11 @@ export function PivotToolbar<T = Record<string, unknown>>({
       csvRows.push(row.join(','));
     });
 
-    // Create download
-    const csvContent = csvRows.join('\n');
+    return csvRows.join('\n');
+  };
+
+  const handleExportCSV = () => {
+    const csvContent = buildCSVContent();
     const blob = new Blob([csvContent], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -70,19 +73,38 @@ export function PivotToolbar<T = Record<string, unknown>>({
     }
   };
 
+  const handleCopyCSV = async () => {
+    const csvContent = buildCSVContent();
+    try {
+      await navigator.clipboard.writeText(csvContent);
+      // Could add a toast notification here
+    } catch (err) {
+      console.error('Failed to copy CSV:', err);
+    }
+  };
+
   return (
     <div className={`pivot-toolbar ${className}`}>
       <button 
         className="pivot-toolbar-btn"
         onClick={handleReset}
+        title="Reset pivot table to default layout"
       >
         Reset Layout
       </button>
       <button 
         className="pivot-toolbar-btn"
-        onClick={handleExportCSV}
+        onClick={handleCopyCSV}
+        title="Copy CSV data to clipboard"
       >
-        Export to CSV
+        📋 Copy CSV
+      </button>
+      <button 
+        className="pivot-toolbar-btn"
+        onClick={handleExportCSV}
+        title="Download CSV file"
+      >
+        💾 Export CSV
       </button>
     </div>
   );

@@ -26,20 +26,30 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .pivot-corner-cell {
   background-color: var(--pivot-bg-tertiary, #fafafa);
+  position: sticky;
+  top: 0;
+  z-index: 11;
 }
 
 .pivot-column-header {
   background-color: var(--pivot-bg-secondary, #f5f5f5);
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .pivot-row-header {
   background-color: var(--pivot-bg-tertiary, #fafafa);
   font-weight: 500;
+  position: sticky;
+  left: 0;
+  z-index: 5;
 }
 
 .pivot-header-cell.clickable {
@@ -124,11 +134,19 @@
   font-size: 13px;
   cursor: move;
   user-select: none;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .pivot-field-chip:hover {
   background: var(--pivot-chip-hover, #1976d2);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+}
+
+.pivot-field-chip:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .pivot-field-chip.available {
@@ -137,6 +155,7 @@
 
 .pivot-field-chip.available:hover {
   background: var(--pivot-chip-hover, #616161);
+  transform: translateY(-1px);
 }
 
 .pivot-field-remove {
@@ -539,13 +558,27 @@
   color: var(--pivot-text-secondary, #a0aec0);
 }
 
-/* Table Enhancements */
-.pivot-table tbody tr:nth-child(even) .pivot-value-cell {
-  background-color: var(--pivot-bg-tertiary, #fafafa);
+/* Table Enhancements - Zebra Striping */
+.pivot-table tbody tr:nth-child(even) {
+  background-color: var(--pivot-bg-tertiary, #f9f9f9);
 }
 
-.pivot-table tbody tr:hover .pivot-value-cell {
+.pivot-table tbody tr:nth-child(even) .pivot-value-cell {
+  background-color: inherit;
+}
+
+.pivot-table tbody tr:nth-child(odd) .pivot-value-cell {
+  background-color: var(--pivot-bg-primary, white);
+}
+
+.pivot-table tbody tr:hover {
   background-color: var(--pivot-bg-hover, #f0f0f0);
+  transition: background-color 0.15s ease;
+}
+
+.pivot-table tbody tr:hover .pivot-value-cell,
+.pivot-table tbody tr:hover .pivot-row-header {
+  background-color: inherit;
 }
 
 .pivot-table thead th {
@@ -621,7 +654,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   bottom: -2px;
 }
@@ -634,7 +667,9 @@
 .dataset-tab.active {
   color: var(--pivot-accent-primary, #667eea);
   border-bottom-color: var(--pivot-accent-primary, #667eea);
+  border-bottom-width: 3px;
   font-weight: 600;
+  background: linear-gradient(to top, var(--pivot-bg-tertiary, #f5f5f5), transparent);
 }
 
 /* Totals Toggle */
