@@ -1,73 +1,242 @@
-# React + TypeScript + Vite
+# React Pivot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![CI](https://github.com/bhushanpoojary/react-pivot/actions/workflows/ci.yml/badge.svg)](https://github.com/bhushanpoojary/react-pivot/actions/workflows/ci.yml)
+[![Deploy](https://github.com/bhushanpoojary/react-pivot/actions/workflows/deploy.yml/badge.svg)](https://github.com/bhushanpoojary/react-pivot/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Currently, two official plugins are available:
+A lightweight, customizable React pivot table component library with drag-and-drop field configuration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[**Live Demo**](https://bhushanpoojary.github.io/react-pivot/)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✨ **Drag-and-Drop Configuration** - Intuitive field arrangement with HTML5 drag-and-drop  
+📊 **Multiple Aggregations** - Sum, Average, Min, Max, Count  
+🎨 **Minimal Styling** - Library-agnostic CSS that's easy to customize  
+📦 **Lightweight** - No heavy dependencies, tree-shakeable  
+🔧 **TypeScript Support** - Full type definitions included  
+💾 **CSV Export** - Built-in export functionality  
+⚡ **Fast** - Pure TypeScript pivot engine with React rendering layer
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install react-pivot
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+or
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn add react-pivot
 ```
+
+## Quick Start
+
+```tsx
+import { PivotTable, PivotFieldList, PivotToolbar } from 'react-pivot';
+import { useState } from 'react';
+
+function App() {
+  const data = [
+    { date: '2024-01', region: 'North', product: 'Laptop', revenue: 22500 },
+    { date: '2024-01', region: 'South', product: 'Mouse', revenue: 1500 },
+    // ... more data
+  ];
+
+  const fields = [
+    { id: 'date', label: 'Date', dataKey: 'date', type: 'row' },
+    { id: 'region', label: 'Region', dataKey: 'region', type: 'row' },
+    { id: 'product', label: 'Product', dataKey: 'product', type: 'row' },
+    { id: 'revenue', label: 'Revenue', dataKey: 'revenue', type: 'value', aggregation: 'sum' },
+  ];
+
+  const [config, setConfig] = useState({
+    rows: ['region'],
+    columns: ['date'],
+    values: ['revenue'],
+    filters: [],
+  });
+
+  return (
+    <div>
+      <PivotFieldList
+        fields={fields}
+        config={config}
+        onConfigChange={setConfig}
+      />
+      <PivotToolbar
+        data={data}
+        fields={fields}
+        config={config}
+        onConfigChange={setConfig}
+      />
+      <PivotTable
+        data={data}
+        fields={fields}
+        config={config}
+        onConfigChange={setConfig}
+      />
+    </div>
+  );
+}
+```
+
+## Usage
+
+### Core Components
+
+#### `PivotTable`
+
+The main pivot table renderer.
+
+```tsx
+<PivotTable
+  data={data}              // Array of data objects
+  fields={fields}          // Field definitions
+  config={config}          // Pivot configuration
+  onConfigChange={setConfig}  // Config change handler
+  showTotals={true}        // Optional: show totals
+  className="my-pivot"     // Optional: custom class
+/>
+```
+
+#### `PivotFieldList`
+
+Drag-and-drop field configuration panel.
+
+```tsx
+<PivotFieldList
+  fields={fields}
+  config={config}
+  onConfigChange={setConfig}
+/>
+```
+
+#### `PivotToolbar`
+
+Toolbar with reset and export functionality.
+
+```tsx
+<PivotToolbar
+  data={data}
+  fields={fields}
+  config={config}
+  onConfigChange={setConfig}
+/>
+```
+
+### Field Definition
+
+```typescript
+interface PivotField {
+  id: string;              // Unique field identifier
+  label: string;           // Display label
+  dataKey: string;         // Property name in data
+  type: 'row' | 'column' | 'value' | 'filter';
+  aggregation?: 'sum' | 'avg' | 'min' | 'max' | 'count';
+  formatter?: (value: any) => string;  // Custom formatter
+}
+```
+
+### Configuration
+
+```typescript
+interface PivotConfig {
+  rows: string[];          // Field IDs for row dimensions
+  columns: string[];       // Field IDs for column dimensions
+  values: string[];        // Field IDs for value measures
+  filters?: PivotFilter[]; // Optional filters
+}
+```
+
+## Advanced Usage
+
+### Custom Aggregation
+
+```typescript
+import { buildPivot, AGGREGATORS } from 'react-pivot';
+
+// Use the core engine directly
+const result = buildPivot(data, fields, config);
+
+// Access aggregators
+const sum = AGGREGATORS.sum([1, 2, 3, 4]); // 10
+```
+
+### Custom Styling
+
+Override CSS classes:
+
+```css
+.pivot-table {
+  border-color: #e0e0e0;
+}
+
+.pivot-field-chip {
+  background: #your-color;
+}
+```
+
+## Development
+
+```bash
+# Clone the repository
+git clone https://github.com/bhushanpoojary/react-pivot.git
+cd react-pivot
+
+# Install dependencies
+npm install
+
+# Run demo app
+npm run dev
+
+# Build library
+npm run build:lib
+
+# Build demo for deployment
+npm run build
+```
+
+## Architecture
+
+```
+src/
+├── lib/                 # Core pivot engine (framework-agnostic)
+│   ├── types.ts         # TypeScript definitions
+│   ├── aggregation.ts   # Aggregation functions
+│   └── pivotEngine.ts   # Pure pivot logic
+├── components/          # React UI components
+│   ├── PivotTable.tsx
+│   ├── PivotFieldList.tsx
+│   ├── PivotToolbar.tsx
+│   └── ...
+└── demo/                # Example application
+```
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+MIT © [Bhushan Poojary](https://github.com/bhushanpoojary)
+
+## Acknowledgments
+
+Built with:
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)

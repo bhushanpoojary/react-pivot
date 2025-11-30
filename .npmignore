@@ -1,0 +1,28 @@
+# Source files
+src/
+public/
+
+# Config files
+vite.config.ts
+tsconfig*.json
+eslint.config.js
+
+# Development files
+.github/
+.vscode/
+.idea/
+
+# Documentation (keep only essential docs in npm package)
+CONTRIBUTING.md
+
+# Demo
+*.html
+index.html
+
+# Build artifacts
+node_modules/
+.cache/
+
+# Misc
+*.log
+.DS_Store
