@@ -333,12 +333,14 @@ export default MyPivotApp;`;
                 />
                 <span>Show Grand Totals</span>
               </label>
-              <PivotToolbar id="pivot-toolbar"
-                data={currentDataset.data as unknown as Record<string, unknown>[]}
-                fields={currentDataset.fields}
-                config={config}
-                onConfigChange={setConfig}
-              />
+              <div id="pivot-toolbar">
+                <PivotToolbar
+                  data={currentDataset.data as unknown as Record<string, unknown>[]}
+                  fields={currentDataset.fields}
+                  config={config}
+                  onConfigChange={setConfig}
+                />
+              </div>
             </div>
           </div>
           <PivotTable
