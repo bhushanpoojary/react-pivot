@@ -6,7 +6,22 @@
 
 A lightweight, customizable React pivot table component library with drag-and-drop field configuration.
 
-[**Live Demo**](https://bhushanpoojary.github.io/react-pivot/)
+[**Live Demo**](https://bhushanpoojary.github.io/react-pivot/) | [**View Themes**](https://bhushanpoojary.github.io/react-pivot/themes.html)
+
+## Demo
+
+![React Pivot Demo](./demo.gif)
+
+> **Note:** Record a GIF showing drag-and-drop field configuration, theme switching, and CSV export. Use [ScreenToGif](https://www.screentogif.com/) (Windows) or [Kap](https://getkap.co/) (Mac) to create the demo.
+
+**What to include in the GIF:**
+1. Drag fields between Rows, Columns, and Values
+2. Switch between different themes
+3. Toggle "Show Grand Totals"
+4. Switch between dataset tabs (Sales, Inventory, Orders)
+5. Export to CSV
+
+Once recorded, save as `demo.gif` in the repository root.
 
 ## Features
 
@@ -254,9 +269,15 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## Related Projects
+
+- [React Data Grid](https://reactdatagrid.dev) - Enterprise-grade data grid for React
+
 ## License
 
 MIT © [Bhushan Poojary](https://github.com/bhushanpoojary)
+
+**react-pivot** is currently in active development. Feedback and GitHub issues are welcome!
 
 ## Acknowledgments
 
@@ -264,3 +285,9 @@ Built with:
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/bhushanpoojary">Bhushan Poojary</a>
+</p>
